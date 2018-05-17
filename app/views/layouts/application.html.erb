@@ -1,15 +1,54 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>GuiaEventos</title>
+    <title>SpringfieldBiketipovc</title>
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand mb-0" href="#">Bike tipo vc</a>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="stations#index">Stations</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="bikes#index">Bikes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="trips#index">Trips</a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <% if logged_in? -%>
+            Welcome, <%= current_user.name %>
+            <br><%= link_to("/logout", class: "btn btn-outline-danger") do %>
+              Logout
+            <% end %>
+          <% else %>
+          <%= link_to("/auth/facebook", class: "btn btn-outline-primary") do %>
+            Login with Facebook
+          <% end %>
+          <% end -%>
+        </form>
+      </div>
+    </nav>
+
+    <% flash.each do |key, value| %>
+        <div class="alert alert-info">
+          <%= flash[:notice] %>
+        </div>
+    <% end %>
+    <br>
+
     <%= yield %>
   </body>
 </html>
