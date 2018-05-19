@@ -32,13 +32,14 @@ ActiveRecord::Schema.define(version: 2018_05_16_193135) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
-    t.string "password_digest"
+    t.string "password"
+    t.string "password_confirmation"
     t.string "access_token"
     t.string "uid"
     t.string "photo_url"
     t.string "provider"
-    t.integer "phone_number"
-    t.string "document_numbert"
+    t.string "phone_number"
+    t.string "document_number"
     t.string "address"
     t.string "number"
     t.datetime "created_at", null: false

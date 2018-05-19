@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SpringfieldBiketipovc</title>
+    <title>Guia Eventos</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,46 +9,37 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <a class="navbar-brand mb-0" href="#">Bike tipo vc</a>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="stations#index">Stations</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="bikes#index">Bikes</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="trips#index">Trips</a>
-          </li>
+    <nav class="nav-extended white">
+      <div class="nav-wrapper">
+        <a href="/" target="_self" class="brand-logo" style="color: black; margin-right: 10px; margin-left:10px;">Guia Eventos</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse" style="color: #000;"><i class="material-icons">menu</i></a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a style="color: #000" href="/">Página Principal</a></li>
+          <li><a style="color: #000" href="candidates">Quem somos</a></li>
+          <li><a style="color: #000" href="voters">Categorias de Eventos</a></li>
+          <li><form class="form-inline my-2 my-lg-0" style="color: #089;">
+            <% if logged_in? -%>
+              Olá, <%= current_user.name %>
+              <%= link_to("/logout", class: "btn btn-outline-danger") do %>
+                Sair
+              <% end %>
+              <% else %>
+              <%= link_to("/sessions/login", class: "waves-light btn") do %>
+                Entrar como Empresa
+              <% end %>
+              <%= link_to("/auth/facebook", class: "waves-light btn", style: 'background-color: #3b5998;') do %>
+                Entrar com Facebook
+              <% end %>
+            <% end -%>
+          </form></li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <% if logged_in? -%>
-            Welcome, <%= current_user.name %>
-            <br><%= link_to("/logout", class: "btn btn-outline-danger") do %>
-              Logout
-            <% end %>
-          <% else %>
-          <%= link_to("/auth/facebook", class: "btn btn-outline-primary") do %>
-            Login with Facebook
-          <% end %>
-          <% end -%>
-        </form>
+        <ul class="side-nav" id="mobile-demo" style="transform: translateX(-100%);">
+          <li><a href="/" >Página Principal</a></li>
+          <li><a href="candidates">Quem somos</a></li>
+          <li><a href="voters">Categorias de Eventos</a></li>
+        </ul>
       </div>
     </nav>
-
-    <% flash.each do |key, value| %>
-        <div class="alert alert-info">
-          <%= flash[:notice] %>
-        </div>
-    <% end %>
-    <br>
-
     <%= yield %>
   </body>
 </html>

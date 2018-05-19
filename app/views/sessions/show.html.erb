@@ -1,0 +1,30 @@
+<center><header><h3 class="display-4">Login Empresa</h3></header></center><br>
+  <%= form_for @company, url: { controller: 'sessions' } do |f| %>
+  <div class="row " style="width: 50%;">
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s12">
+            <%= f.label 'Email' %>
+            <%= f.text_field :email %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12" type="password">
+            <%= f.label 'Senha' %>
+            <%= f.text_field :password %>
+          </div>
+        </div>
+        <div class="row" style="width: 25%;">
+          <div class="actions btn waves-effect waves-light">
+            <%= f.submit 'Entrar' %>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div>
+      <%= link_to("/sessions/new", class: "waves-light btn") do %>
+        Cadastre-se
+      <% end %>
+    </div>
+  </div>
+<% end %>

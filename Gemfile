@@ -31,8 +31,10 @@ group :development do
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'bootstrap'
 gem 'geocoder'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'bcrypt'
+gem 'materialize-sass'
+gem 'material_icons'
+gem 'jquery-rails'

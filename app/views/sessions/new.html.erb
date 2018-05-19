@@ -1,0 +1,61 @@
+<center><header><h3 class="display-4">Cadastro Empresa</h3></header></center><br>
+<%= form_for @company, url: { controller: 'sessions' } do |f| %>
+  <div class="row" style="width: 50%;">
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s12">
+            <%= f.label 'Nome' %>
+            <%= f.text_field :name %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <%= f.label 'CNPJ' %>
+            <%= f.text_field :document_number %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <%= f.label 'Endereço' %>
+            <%= f.text_field :address %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <%= f.label 'Número' %>
+            <%= f.text_field :number %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <%= f.label 'Telefone' %>
+            <%= f.text_field :phone_number %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <%= f.label 'Email' %>
+            <%= f.text_field :email %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12" type="password">
+            <%= f.label 'Senha' %>
+            <%= f.text_field :password %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12" type="password">
+            <%= f.label 'Confirme a senha' %>
+            <%= f.text_field :password_confirmation %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="actions btn waves-effect waves-light">
+            <%= f.submit 'Cadastrar' %>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+<% end %>
