@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2018_05_16_193135) do
     t.string "name", null: false
     t.string "address"
     t.string "number"
+    t.float "price"
     t.string "zip_code"
     t.string "description"
     t.string "image"

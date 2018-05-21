@@ -16,12 +16,16 @@ class SessionsController < ApplicationController
       auth = request.env["omniauth.auth"]
       user = Common.find_or_create_with_omniauth(auth)
     end
-    session[:user_id] = user.id
-    redirect_to root_url
+    if user.present?
+      session[:user_id] = user.id
+      redirect_to root_url
+    else
+      failure
+    end
   end
 
   def failure
-    redirect_to root_url
+    redirect_to root_url, flash: { :notice => "Inválido!" }
   end
 
   def destroy

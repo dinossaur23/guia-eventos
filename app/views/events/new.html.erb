@@ -1,0 +1,86 @@
+<center><header><h3 class="display-4">Cadastro Evento</h3></header></center><br>
+<div class="form-inline my-2 my-lg-0" style="color: #089;">
+  <% if logged_in? -%>
+    <%= form_for @event, url: { action: 'create', controller: 'events' }, method: 'post' do |f| %>
+      <div class="row" style="width: 50%;">
+          <div class="col s12">
+            <div class="row">
+              <div class="input-field col s12">
+                <%= f.label 'Nome' %>
+                <%= f.text_field :name %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <%= f.label 'Endereço' %>
+                <%= f.text_field :address %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <%= f.label 'Número' %>
+                <%= f.text_field :number %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <%= f.label 'Preço' %>
+                <%= f.text_field :price %>
+              </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <%= f.label 'CEP' %>
+                <%= f.text_field :zip_code %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <%= f.label 'Descrição' %>
+                <%= f.text_field :description %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <%= f.label 'Imagem' %>
+                <%= f.text_field :image %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <%= f.label 'Data' %>
+                <%= f.text_field :date%>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <%= f.label 'Hora inicial' %>
+                <%= f.text_field :initial_time %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <%= f.label 'Hora final' %>
+                <%= f.text_field :final_time %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="actions btn waves-effect waves-light">
+                <%= f.submit 'Cadastrar' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+  <center><div>
+    <h5>Ops! Você precisa estar logado para cadastrar um evento ;)</h5><br><br>
+    <%= link_to("/sessions/login", class: "waves-light btn") do %>
+      Entrar como Empresa
+    <% end %>
+    <%= link_to("/auth/facebook", class: "waves-light btn", style: 'background-color: #3b5998;') do %>
+      Entrar com Facebook
+    <% end %>
+  </div></center>
+<% end -%>
+</div>

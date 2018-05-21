@@ -1,0 +1,56 @@
+<header>
+  <nav class="top-nav" style="background-color: #b1fbe72e;">
+    <div class="nav-wrapper">
+        <ul class="hide-on-med-and-down" style="margin-left: 260px;">
+          <li style="width: 95%;"><div class="input-field col s6 s12 black-text">
+            <i class="green-text material-icons prefix">search</i>
+            <input type="text" class="blue-text" placeholder="Buscar Eventos" >
+          </div></li>
+        </ul>
+    </div>
+  </nav>
+  <ul style="width:250px; margin-top:65px;" class="side-nav fixed">
+    <li><a href="/events/my">Meus Eventos</a></li>
+    <li><a href="#">Eventos com Interesse</a></li>
+    <li><a href="#">Festas</a></li>
+    <li><a href="#">Gastronomia</a></li>
+    <li><a href="#">Feiras</a></li>
+    <li><a href="#">Festivais</a></li>
+    <li><a href="#">Adoções</a></li>
+  </ul>
+  <div class="display-4" style="margin-left: 260px;"><h4>Meus Eventos</h4>
+    <% if logged_in? -%>
+      <%= link_to("/events/new", class: "waves-light btn right") do %>
+        Cadastrar Evento
+      <% end %><br><br><br>
+      <div class="row center-cols">
+      <% Array(@events).each do |event| %>
+        <div class="col m4">
+          <div class="card">
+            <div class="card-image">
+              <span class="card-title"><%= event.name %></span>
+            </div>
+            <div class="card-content">
+              <p>Endereço: <%=event.address%></p>
+              <p>Número: <%=event.number%></p>
+              <p> Preço: R$ <%= event.price %></p>
+              <p>Data: <%=event.date.strftime('%d/%m/%Y') %></p>
+              <p>Hora de início: <%=event.initial_time.strftime('%H:%M')%></p>
+              <p>Hora de fim: <%=event.final_time.strftime('%H:%M')%></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <center><div>
+        <h5>Ops! Você precisa estar logado para ver seus eventos ;)</h5><br><br>
+        <%= link_to("/sessions/login", class: "waves-light btn") do %>
+          Entrar como Empresa
+        <% end %>
+        <%= link_to("/auth/facebook", class: "waves-light btn", style: 'background-color: #3b5998;') do %>
+          Entrar com Facebook
+      <% end %>
+    <% end %>
+    </div>
+  </div>
+</div>

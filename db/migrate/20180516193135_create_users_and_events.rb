@@ -22,6 +22,7 @@ class CreateUsersAndEvents < ActiveRecord::Migration[5.2]
       t.string :name, null: false
       t.string :address
       t.string :number
+      t.float :price
       t.string :zip_code
       t.string :description
       t.string :image

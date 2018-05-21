@@ -8,10 +8,11 @@ class Company < User
   before_save { self.email = email.downcase }
 
   def self.find_or_create_with_form(params)
-    user = User.find_by(email: params[:email])
-    unless user
-      user = User.new
-      user.assign_attributes({
+    @user = User.find_by(email: params[:email])
+
+    if !@user && params[:name].present? #cadastro
+      @user = User.new
+      @user.assign_attributes({
         name: params[:name],
         email: params[:email],
         password: params[:password],
@@ -21,8 +22,18 @@ class Company < User
         phone_number: params[:phone_number],
         document_number: params[:document_number]
       })
-      user.save!
+      @user.save!
+    else #login
+      if @user && self.authenticate(params[:password])
+        true
+      else
+        @user = nil
+      end
     end
-    user
+    @user
+  end
+
+  def self.authenticate(submitted_password)
+    @user.password == submitted_password
   end
 end
