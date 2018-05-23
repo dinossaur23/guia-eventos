@@ -34,6 +34,10 @@ class EventsController < ApplicationController
     redirect_to root_url
   end
 
+  def search
+    @events = Event.search_events(params[:search])
+  end
+
   private
     def event_params
       params.require(:event).permit(

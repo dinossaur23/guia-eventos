@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   match "/auth/failure" => "sessions#failure", as: :auth_failure, via: [:get, :post]
   match "/logout" => "sessions#destroy", as: :logout, via: [:get, :post]
   match "events/my" => "events#show", via: [:get, :post]
-  
+  match "events/search" => "events#search", :as => "search", via: [:get, :post]
+
   root 'events#index'
 end

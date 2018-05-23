@@ -20,28 +20,32 @@
     <li><a href="#">Adoções</a></li>
   </ul>
   <div class="display-4" style="margin-left: 270px;">
-    <center><header><h3 class="display-4">Principais Eventos</h3></header></center><br>
+    <center><header><h3 class="display-4">Eventos buscados</h3></header></center><br>
     <div class="row center-cols">
-      <% @events.each do |event| %>
-        <div class="col m4">
-          <div class="card">
-            <div class="card-image">
-              <span class="card-title"><%= event.name %></span>
-            </div>
-            <div class="card-content">
-              <p>Endereço: <%=event.address%></p>
-              <p>Número: <%=event.number%></p>
-              <% if logged_in? %>
-              <p> Preço: R$ <%= event.price %></p>
-              <% else %>
-                Preço: <font color="green">FAÇA LOGIN</font>
-              <% end %></p>
-              <p>Data: <%=event.date.strftime('%d/%m/%Y') %></p>
-              <p>Hora de início: <%=event.initial_time.strftime('%H:%M')%></p>
-              <p>Hora de fim: <%=event.final_time.strftime('%H:%M')%></p>
+      <% if @events.present? %>
+        <% @events.each do |event| %>
+          <div class="col m4">
+            <div class="card">
+              <div class="card-image">
+                <span class="card-title"><%= event.name %></span>
+              </div>
+              <div class="card-content">
+                <p>Endereço: <%=event.address%></p>
+                <p>Número: <%=event.number%></p>
+                <% if logged_in? %>
+                <p> Preço: R$ <%= event.price %></p>
+                <% else %>
+                  Preço: <font color="green">FAÇA LOGIN</font>
+                <% end %></p>
+                <p>Data: <%=event.date.strftime('%d/%m/%Y') %></p>
+                <p>Hora de início: <%=event.initial_time.strftime('%H:%M')%></p>
+                <p>Hora de fim: <%=event.final_time.strftime('%H:%M')%></p>
+              </div>
             </div>
           </div>
-        </div>
+        <% end %>
+      <% else %>
+      <center><br><h5>Nenhum evento encontrado :(</h5></center>
       <% end %>
     </div>
   </div>

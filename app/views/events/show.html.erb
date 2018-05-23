@@ -1,15 +1,16 @@
 <header>
-  <nav class="top-nav" style="background-color: #b1fbe72e;">
-    <div class="nav-wrapper">
-        <ul class="hide-on-med-and-down" style="margin-left: 260px;">
-          <li style="width: 95%;"><div class="input-field col s6 s12 black-text">
-            <i class="green-text material-icons prefix">search</i>
-            <input type="text" class="blue-text" placeholder="Buscar Eventos" >
-          </div></li>
-        </ul>
+  <nav class="top-nav" style="background-color:#b1fbe72e;">
+    <div class="nav-wrapper" style="margin-left: 260px;">
+      <%= form_tag search_path, url: { controller: 'events' }, method: 'post' do %>
+          <div class="input-field">
+            <%= search_field_tag :search, params[:search], id: "search", placeholder: 'Buscar Eventos' %>
+            <label for="search"><i class="material-icons">search</i></label>
+            <i class="material-icons">close</i>
+        </div>
+      <% end %>
     </div>
   </nav>
-  <ul style="width:250px; margin-top:65px;" class="side-nav fixed">
+  <ul style="width:260px; margin-top:65px;" class="side-nav fixed">
     <li><a href="/events/my">Meus Eventos</a></li>
     <li><a href="#">Eventos com Interesse</a></li>
     <li><a href="#">Festas</a></li>
@@ -18,7 +19,7 @@
     <li><a href="#">Festivais</a></li>
     <li><a href="#">Adoções</a></li>
   </ul>
-  <div class="display-4" style="margin-left: 260px;"><h4>Meus Eventos</h4>
+  <div class="display-4" style="margin-left: 270px;"><h4>Meus Eventos</h4>
     <% if logged_in? -%>
       <%= link_to("/events/new", class: "waves-light btn right") do %>
         Cadastrar Evento
