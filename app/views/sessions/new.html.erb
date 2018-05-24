@@ -39,15 +39,15 @@
           </div>
         </div>
         <div class="row">
-          <div class="input-field col s12" type="password">
+          <div class="input-field col s12">
             <%= f.label 'Senha' %>
-            <%= f.text_field :password %>
+            <%= f.text_field :password, class: 'validate', type: 'password' %>
           </div>
         </div>
         <div class="row">
-          <div class="input-field col s12" type="password">
+          <div class="input-field col s12">
             <%= f.label 'Confirme a senha' %>
-            <%= f.text_field :password_confirmation %>
+            <%= f.text_field :password_confirmation, class: 'validate', type: 'password' %>
           </div>
         </div>
         <div class="row">
