@@ -25,14 +25,15 @@
         Cadastrar Evento
       <% end %><br><br><br>
       <div class="row center-cols">
-      <% Array(@events).each do |event| %>
+      <% @events.each do |event| %>
         <div class="col m4">
           <div class="card">
             <div class="card-image">
-              <%= image_tag event.image.url %>
+              <%= image_tag(event.image.url, height: '300', width: '100') %>
               <span class="card-title"><%= event.name %></span>
             </div>
             <div class="card-content">
+              <p>Descrição: <%=event.description%></p>
               <p>Endereço: <%=event.address%></p>
               <p>Número: <%=event.number%></p>
               <p> Preço: R$ <%= event.price %></p>

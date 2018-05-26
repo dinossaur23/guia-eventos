@@ -6,7 +6,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @events = Event.find_by(user_id: session[:user_id])
+    @events = Event.where(user_id: session[:user_id])
   end
 
   def new
