@@ -1,0 +1,8 @@
+production:
+  cloud_name: "djrtmm0ua"
+  api_key: "637347844545569"
+  api_secret: "KyP1QKPNlEt9hN9ZfxFGEx7RcJw"
+development:
+  cloud_name: "djrtmm0ua"
+  api_key: "637347844545569"
+  api_secret: "KyP1QKPNlEt9hN9ZfxFGEx7RcJw"
